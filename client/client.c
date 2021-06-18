@@ -7,7 +7,7 @@
 
 int main(int argc , char *argv[]) {
     int soc;
-    struct sockaddr_in server;
+    struct sockaddr_in serv;
     char message[1000] , reply[2000];
  
     //Create socket
@@ -17,12 +17,12 @@ int main(int argc , char *argv[]) {
     }
     puts("Socket created\n");
     
-    server.sin_addr.s_addr = inet_addr("127.0.0.1");
-    server.sin_family = AF_INET;
-    server.sin_port = htons(PORT);
+    serv.sin_addr.s_addr = inet_addr("127.0.0.1");
+    serv.sin_family = AF_INET;
+    serv.sin_port = htons(PORT);
 
     //Connect to remote server
-    if(connect(soc , (struct sockaddr *)&server , sizeof(server)) < 0) {
+    if(connect(soc , (struct sockaddr *)&serv , sizeof(serv)) < 0) {
         perror("Connection failed\n");
         return 1;
     }
